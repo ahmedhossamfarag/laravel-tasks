@@ -39,7 +39,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center mt-4">
-                {{ $tasks->links() }}
+                {{ $tasks->appends(request()->query())->links() }}
             </div>
         @else
             <p>No tasks found.</p>
