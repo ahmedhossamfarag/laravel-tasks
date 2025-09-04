@@ -11,10 +11,26 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all();
-        return view('tasks/index', ['tasks' => $tasks]);
+        $request->validate([
+            'query' => 'nullable',
+            'status' => 'nullable|in:all,pending,completed'
+        ]);
+        $query = $request->input('query');
+        $status = $request->input('status');
+        $tasks = Task::query();
+        if ($query) {
+            $tasks = $tasks->where('title', 'like', '%' . $query . '%');
+        }
+        if ($status) {
+            if ($status != 'all') {
+                $tasks = $tasks->where('status', '=', $status);
+            }
+        }
+        $tasks = $tasks->orderBy('created_at', 'desc')->get();
+
+        return view('tasks/index', ['tasks' => $tasks, 'query' => $query, 'status' => $status]);
     }
 
     /**
