@@ -3,6 +3,7 @@ A Task Manager application that allows users to create, view, update, and delete
 
 ## Setup
 ```
+composer install
 npm install
 php artisan migrate
 composer run dev
