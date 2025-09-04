@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" id="description" placeholder="Description" name="description" required>{{ $task->id? $task->description : old('description') }}</textarea>
+                <textarea class="form-control" id="description" placeholder="Description" name="description">{{ $task->id? $task->description : old('description') }}</textarea>
                 @error('description')
                     <div class="text-danger">{{$message}}</div>
                 @enderror

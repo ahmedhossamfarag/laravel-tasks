@@ -50,7 +50,7 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|min:3|max:100',
-            'description' => 'required|min:3|max:255',
+            'description' => 'nullable|max:255',
             'status' => 'required|in:pending,completed'
         ]);
 
@@ -83,7 +83,7 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|min:3|max:100',
-            'description' => 'required|min:3|max:255',
+            'description' => 'nullable|max:255',
             'status' => 'required|in:pending,completed'
         ]);
 

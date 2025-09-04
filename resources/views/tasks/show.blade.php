@@ -13,7 +13,7 @@
         </div>
         <div>
             <h4>Description</h4>
-            <p>{{ $task->description }}</p>
+            <p>{{ $task->description ? $task->description : 'No description' }}</p>
         </div>
         <div>
             <h4>Created At</h4>
