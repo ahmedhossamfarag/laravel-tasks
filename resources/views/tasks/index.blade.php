@@ -38,6 +38,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center mt-4">
+                {{ $tasks->links() }}
+            </div>
         @else
             <p>No tasks found.</p>
         @endif

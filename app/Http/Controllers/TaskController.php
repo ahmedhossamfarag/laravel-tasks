@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    const TASKS_PER_PAGE = 10;
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +29,7 @@ class TaskController extends Controller
                 $tasks = $tasks->where('status', '=', $status);
             }
         }
-        $tasks = $tasks->orderBy('created_at', 'desc')->get();
+        $tasks = $tasks->orderBy('created_at', 'desc')->paginate(TaskController::TASKS_PER_PAGE);
 
         return view('tasks/index', ['tasks' => $tasks, 'query' => $query, 'status' => $status]);
     }
